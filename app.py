@@ -4,6 +4,17 @@ from wtforms import Form,StringField,TextAreaField,IntegerField,PasswordField,va
 from passlib.hash import sha256_crypt
 from functools import wraps
 
+app = Flask(__name__)
+app.secret_key = "eventblog"
+
+app.config["MYSQL_HOST"] = "eu-cdbr-west-03.cleardb.net"
+app.config["MYSQL_USER"] = "b42b25c74be6f2"
+app.config["MYSQL_PASSWORD"] = "a56bf11a"
+app.config["MYSQL_DB"] = "heroku_784288a0ea34592"
+app.config["MYSQL_CURSORCLASS"] = "DictCursor"
+
+mysql = MySQL(app)
+
 
 #Registiration form
 #Loginrequired decorator
@@ -48,16 +59,7 @@ class SponsorForm(Form):
     budget =  IntegerField('Budget')
 
 
-app = Flask(__name__)
-app.secret_key = "eventblog"
 
-app.config["MYSQL_HOST"] = "eu-cdbr-west-03.cleardb.net"
-app.config["MYSQL_USER"] = "b42b25c74be6f2"
-app.config["MYSQL_PASSWORD"] = "a56bf11a"
-app.config["MYSQL_DB"] = "heroku_784288a0ea34592"
-app.config["MYSQL_CURSORCLASS"] = "DictCursor"
-
-mysql = MySQL(app)
 
 
 @app.route("/")
