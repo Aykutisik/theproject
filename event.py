@@ -51,10 +51,10 @@ class SponsorForm(Form):
 app = Flask(__name__)
 app.secret_key = "eventblog"
 
-app.config["MYSQL_HOST"] = "localhost"
-app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = ""
-app.config["MYSQL_DB"] = "dbevent"
+app.config["MYSQL_HOST"] = "eu-cdbr-west-03.cleardb.net"
+app.config["MYSQL_USER"] = "b42b25c74be6f2"
+app.config["MYSQL_PASSWORD"] = "a56bf11a"
+app.config["MYSQL_DB"] = "heroku_784288a0ea34592"
 app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 
 mysql = MySQL(app)
@@ -549,7 +549,7 @@ def sponsors():
     #sorgu = "Select * From events"
 
     result = cursor.execute(sorgu)
-    sorgu2 = "Select events.title, events.id, sponsors.id_,events.sponsorid from events inner join sponsors on events.sponsorid = 0"
+    sorgu2 = "Select events.title, events.id, sponsors.id_,events.sponsorid from events inner join sponsors on events.sponsorid != sponsors.id_"
     if result > 0:
         sponsors = cursor.fetchall()
         cursor.execute(sorgu2)
@@ -569,6 +569,6 @@ class EventForm(Form):
     eventtype = SelectField(u'Eventtype', choices=[('Sport', 'Sport'), ('Education', 'Education'), ('Art', 'Art'),('Technology','Techonology')])
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run()
 
 
