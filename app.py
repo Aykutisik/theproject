@@ -37,7 +37,7 @@ class PosterForm(Form):
 class RegisterForm(Form):
     name = StringField("Name Surname",validators=[validators.Length(min = 4,max = 25)])
     username = StringField("Username",validators=[validators.Length(min = 5,max = 35)])
-    email = StringField("email",validators=[validators.Email(message = "Please enter a valid email")])
+    email = StringField("email")
     password = PasswordField("Ppassword: ", validators = [validators.DataRequired(message="Please enter a pass"),validators.EqualTo(fieldname = "confirm",message = "Dont match")])
     gender = RadioField('gender', choices = ['male', 'female'])
     confirm = PasswordField("password correction")
