@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block body %}
+<h3>Dashboard</h3>
+<small> Welcome, {{session["username"]}} </small>
+<hr>
+<a href="/addevent" class = "btn btn-danger">Add Event</a>
+
+
+{% if events %}
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Başlık</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for event in events %}
+      
+      <tr>
+        <th scope="row">{{event.id}}</th>
+        <td><a href="/event/{{event.id}}">{{event.title}}</a></td>
+        <td></td>
+        <td></td>
+        <td><a href="/edit/{{event.id}}" class = "btn btn-danger">Update</a></td>
+        <td><a href="/delete/{{event.id}}" class = "btn btn-danger">Delete</a></td>
+      </tr>
+      {% endfor %}
+      
+      <!-- <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr> -->
+    </tbody>
+  </table> 
+  
+
+{% else %}
+<div class = "alert alert-danger"> There is no event yet </div>
+{% endif %}
+
+
+
+
+
+
+{% endblock body %}

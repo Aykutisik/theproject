@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+
+{% from "includes/formhelpers.html" import render_field %}
+
+
+<form method="post">
+
+    {{render_field(form.sponsorname,class = "form-control")}}
+    {{render_field(form.budget,class = "form-control")}}
+
+    <button type = "submit" class = "btn btn-danger">Add Sponsor </button>
+
+</form>
+
+
+
+
+{% endblock body %}

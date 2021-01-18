@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+
+
+{% block body %}
+    <h4>My tickets </h4>
+
+    {% if tickets %}
+        {% for ticket in tickets  %}
+        <tr>         
+               <div> Eventname : {{ticket.eventname2}} </div>
+                <div> Ticket Owner : {{ticket.eventname}} </div>
+                <div> Starting Time: {{ticket.starttime}} </div>
+                <div> Seat Number  : {{ticket.seatnumber}} </div>
+                <div> Seat Letter  : {{ticket.seatletter}} </div>
+                <td> <li class = "list-group-item"><a href="/">  {{ticket.eventname2}}    </a></li><td>
+                <td><a href="/updatetic/{{ticket.id}}" class = "btn btn-danger">Bileti Güncelle</a></td>
+                <td><a href="/deletetic/{{ticket.id}}" class = "btn btn-danger">Bileti Sil</a></td>
+        </tr>
+
+
+
+        <hr><hr>
+        {% endfor %}
+    {% else %}
+        <div> There is no ticket to show </div>
+    {% endif %}
+
+{% endblock body %} 

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+    <h4> Profile Page </h4>
+    <hr>
+    <h2> Update password <h2>
+{% from "includes/formhelpers.html" import render_field %}
+
+<form method="post">
+
+    {{render_field(form.oldpass,class = "form-control")}}
+    {{render_field(form.newpass,class = "form-control")}}
+
+    <button type = "submit" class = "btn btn-primary">Change password </button>
+
+</form>
+<hr><hr><hr>
+<a href="/deleteaccount" class = "btn btn-danger">Bilet oluştur</a>
+
+
+{% endblock body %}

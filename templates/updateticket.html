@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h4> Update Ticket </h4>
+    {% from "includes/formhelpers.html" import render_field %}
+
+<form method="post">
+
+    {{render_field(form.seatnumber,class = "form-control")}}
+    {{render_field(form.seatletter,class = "form-control")}}
+ 
+    <button type = "submit" class = "btn btn-danger">Update </button>
+
+</form>
+
+
+{% endblock body %}

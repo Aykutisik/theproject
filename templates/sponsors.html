@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+    <h4> Sponsors Page </h4>
+    <hr>
+    <a href="/addsponsor" class = "btn btn-primary">Add Sponsor</a>
+
+    {% if sponsors %}
+  
+        <hr>
+
+
+
+        <ul class = "list-group">
+        {% for sponsor in sponsors  %}
+        <tr>
+        <td> <li class = "list-group-item list-group-item-danger"><a href="/sponsor/{{sponsor.id_}}">  {{sponsor.sponsorname}}     </a></li><td>
+        {% for theevent in theevents %}
+        <table>
+        <tbody>
+            <tr>
+            {% if theevent.id_ == sponsor.id_  and  theevent.sponsorid == 0 %}
+                <td> <li class = "list-group-item list-group-item-success"><a href="/sponsor/{{sponsor.id_}}">  {{theevent.title}}    </a></li><td>
+                    <td><a href="/sponsor/{{sponsor.id_}}/{{theevent.id}}" class = "btn btn-success">Sponsor Ol</a></td>
+                     
+            {% else %}
+            {% endif %}
+            </tr>
+        </tbody>
+        </table>
+        {% endfor %}
+
+        </tr>
+        {% endfor %}
+
+
+</ul>
+{% else %}
+<div class = "alert alert-danger">  There is no event yet </div>
+{% endif %}
+
+{% endblock body %}
